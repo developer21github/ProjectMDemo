@@ -1,0 +1,81 @@
+.row
+    .col-md-12
+        .companies-form
+            .companies-heading
+                h2 All Companies
+                .companies-search
+                    form(name='companiesSearch', (ngSubmit)='updateFiltersAndGet()')
+                        input(type='text',name='searchStr', '[(ngModel)]'='searchName' placeholder='Search', (blur)='updateFiltersAndGet()')
+                        button(type='submit', name='searchBtn')
+            .companies-btn-totlas
+                button(type='submit' '[routerLink]'='APP_URLS.manageCompany') Add Company
+                span Showing {{companyDataCount}}/{{totalItems}} Companies
+                .syncLoader(*ngIf='loading')
+                    app-loader([width]='30')
+            .companies-form-short-table
+                .table-short-abcd
+                    ul
+                        li.short-abcd-all
+                            a((click)="getAllCompanies()", [ngClass]='{"active-short":activeChar==="All"}') All
+                        li(*ngFor='let filter of allowedFilters')
+                            a((click)="getCompaniesByFirstLetter(filter)", [ngClass]='{"active-short":activeChar===filter}') {{filter}}
+
+                .table-short-list
+                    table
+                        tr
+                            th
+                                span Company Name
+                            th
+                                span Address
+                            th
+                                span People
+                            th
+                                span Closed projects
+                            th
+                                span Open projects
+                            th
+                                span Next projects
+                            th
+                                span Website
+                            th
+                                span Telephone Number
+                            th([class]='"optionsCol"')
+                                span Options
+
+                        tr(*ngFor='let company of companies let i=index').companies-tr
+                            td
+                                a('[routerLink]'='[APP_URLS.editCompany, company.id]')
+                                    span {{company.name}}
+                            td
+                                a('[routerLink]'='[APP_URLS.editCompany, company.id]')
+                                    span {{company.address_1}}
+                            td
+                                a('[routerLink]'='[APP_URLS.editCompany, company.id]')
+                                    span {{company.countContacts}}
+                            td
+                                a('[routerLink]'='[APP_URLS.editCompany, company.id]')
+                                    span {{company.countClosedProjects}}
+                            td
+                                a('[routerLink]'='[APP_URLS.editCompany, company.id]')
+                                    span {{company.countOpenProjects}}
+                            td
+                                a('[routerLink]'='[APP_URLS.editCompany, company.id]')
+                                    span {{company.next_action_at}}
+                            td
+                                a('[routerLink]'='[APP_URLS.editCompany, company.id]')
+                                    span {{company.website}}
+                            td
+                                a('[routerLink]'='[APP_URLS.editCompany, company.id]')
+                                span {{company.phone}}
+                            td
+                                .table-all-options-icon
+                                    .table-icon-option
+                                        a('[routerLink]'='[APP_URLS.editCompany, company.id]')
+                                            i.icon-edit
+                                    .table-icon-option
+                                        a((click)='deleteCompany(company.id)')
+                                            i.icon-delete
+
+                .text-center(*ngIf='companies.length===0') No companies found.
+                p-confirmDialog
+                p-paginator([rows]='perPage', [totalRecords]='totalItems', (onPageChange)='changePage($event)')

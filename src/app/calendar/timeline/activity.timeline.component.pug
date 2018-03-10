@@ -1,0 +1,32 @@
+button.btn.btn-primary.btn-sm.btn-block((click)="addActivityClicked()") Add Activity
+.timeline-wrapper
+    .line
+    .timeline(*ngIf="!eventsLoaded || activities.length === 0")
+        .item-icon
+            img(class="call-icon-bg active", src="/assets/img/c-icon-2.png")
+        .timeline-item
+            .item-content
+                .item-description
+                    h4.item-title {{eventsLoaded && activities.length===0 ? 'No activity found.': 'Loading...'}}
+                    .item-body
+                        span.label  From: ...
+                        span.label  To: ...
+                        br
+                        span.label  Created By: ...
+
+    .timeline(*ngFor="let activity of activities")
+        .item-icon
+            img.call-icon-bg.active(src="/assets/img/c-icon-1.png", *ngIf='activity.etype === calendarService.TYPES.call')
+            img.call-icon-bg.active(src="/assets/img/c-icon-2.png", *ngIf='activity.etype === calendarService.TYPES.email' )
+            img.call-icon-bg.active(src="/assets/img/c-icon-3.png", *ngIf='activity.etype === calendarService.TYPES.meeting' )
+            img.call-icon-bg.active(src="/assets/img/c-icon-4.png", *ngIf='activity.etype === calendarService.TYPES.notes' )
+        .timeline-item
+
+            .item-content
+                .item-description
+                    h4.item-title {{activity.title}}
+                    .item-body
+                        span.label  From: {{helper.formatDate(activity.start)}}
+                        span.label  To: {{helper.formatDate(activity.end)}}
+                        br
+                        span.label  Created By: {{activity.organizer.name}}

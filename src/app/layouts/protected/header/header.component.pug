@@ -1,0 +1,29 @@
+.container
+    .row
+        .navbar.navbar-default.navbar.menu.main
+            .navbar-header
+                button.navbar-toggle(type="button" data-toggle="collapse" data-target=".navbar-collapse")
+                    span.icon-bar
+                    span.icon-bar
+                    span.icon-bar
+                a.navbar-brand([routerLink]='dashboardURL')
+                    img.img-responsive(src="/assets/img/logo.png" alt="PT Logo")
+                .pull-left.dropdown
+                    a#dropdownMenu1.btn-user.dropdown-toggle((click)="toggleUserPopup($event)")
+                        .img-back
+                            img(src="/assets/img/User_icon.png" alt="")
+                    ul.dropdown-menu.user-dropdown(*ngIf="userPopup")
+                        li
+                            a(href="#")
+                                span.u_name {{user.user_name}}
+                        li
+                            a((click)='logout()')
+                                span.sign_out Sign Out
+            .navbar-collapse.collapse
+                ul.nav.navbar-nav
+                    li
+                        a(*ngIf='permissionsService.showManagementMenu()' '[routerLink]'='projectURL') Projects
+                    li
+                        a(*ngIf='permissionsService.showProjectsMenu()' '[routerLink]'='companyURL') Companies
+                    li
+                        a('[routerLink]'='calendarURL') Calendar

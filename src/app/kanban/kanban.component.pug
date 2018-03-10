@@ -1,0 +1,4 @@
+.row
+    .kanban-container
+        .kanban-wrapper(#kanbanContainer)
+            app-column(*ngFor="let column of columns ", [column]="column", [projects]="columnProjects[column.id]", (projectsUpdated)="kanbanUpdated($event)", (projectsClicked)="projectClicked($event)")

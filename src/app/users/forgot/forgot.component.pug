@@ -1,0 +1,17 @@
+form.text-center('name'='forgotForm' '(ngSubmit)'="forgot()")
+  .login_form
+    .loaderAbsHolder('*ngIf'='loading')
+      app-loader
+    .row
+      .col-lg-12
+        .text-center.col-lg-8.col-lg-offset-2.col-md-8.col-md-offset-2.col-sm-8.col-sm-offset-2.col-xs-8.col-xs-offset-2
+          img.img-responsive.logo-img(src="/assets/img/logo.png" alt="knauf_logo")
+        .form-group
+          input#inputEmai.form-control.question(type="email" placeholder="Email address" maxlength="50" 'name'='userEmail' '[(ngModel)]'='userEmail')
+        .form-group
+          .text-right
+            button.btn_submit.pull-right.login(type="submit" '*ngIf'='!(loading)') Submit
+            button.btn_submit.pull-right.login(type="button" '*ngIf'='loading') Please wait!
+      .col-sm-12
+        label
+          a('[routerLink]'='APP_URLS.login') Back to login

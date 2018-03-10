@@ -1,0 +1,12 @@
+.row
+    .col-md-12
+        .companies-form
+            .companies-heading
+                h2 Project Manager
+            .companies-btn-totlas
+                button(type='button' '[routerLink]'='APP_URLS.manageProject') Add Project
+                button(type='button', (click)="getProjects()", *ngIf="!syncing") Sync
+                .syncLoader(*ngIf="syncing")
+                    app-loader([width]='50')
+            app-loader(*ngIf="count < 2")
+            app-kanban(*ngIf="count >= 2", [(projects)]='projects', [(columns)]='stages', (projectsUpdated)="kanbanStateUpdated($event)", (projClicked)="projectClicked($event)")

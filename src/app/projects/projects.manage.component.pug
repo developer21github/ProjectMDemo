@@ -1,0 +1,104 @@
+.row
+    .col-sm-3(*ngIf='editData')
+        app-activity-timeline([project]='id')
+    div([ngClass]="{'col-md-9':editData, 'col-md-12':!editData}")
+        form('name'='projectForm', '(ngSubmit)'="formSubmitted=true;addProject()")
+            .companies-form
+                .companies-heading
+                    h2(*ngIf="!editData") Create A project
+                    h2(*ngIf="editData")  Edit project
+                    .loading(*ngIf='loading')
+                        app-loader([width]="30")
+                    .back-page
+                        a(href='#' '[routerLink]'='APP_URLS.project') Back
+                .create-project
+                    ul
+                        li
+                            span([ngClass]="{\'has-error\': (validation.name)}") Name
+                            input(type='text', placeholder='Add Name', name='name', '[(ngModel)]'='projectData.name', (change)="somethingChanged()")
+                        li
+                            span([ngClass]="{\'has-error\': (false)}") Created
+                            .input-box-icon
+                                p-calendar(placeholder='Select a date', dateFormat="dd/mm/yy" , name='created' '[(ngModel)]'='projectData.created', (onSelect)="dateFieldChanged('created')", [readonlyInput]="true", disabled='').pcalendar
+                                i.calendar-input-icon
+                        li
+                            span Revised
+                            .input-box-icon
+                                p-calendar(placeholder='Select a date', dateFormat="dd/mm/yy"  editable="editable", name='revised' '[(ngModel)]'='projectData.revised', (onSelect)="dateFieldChanged('revised')").pcalendar
+                                i.calendar-input-icon
+                        li
+                            span Latest revision
+                            input(type='text', placeholder='Latest revision', name='latest_revision', '[(ngModel)]'='projectData.latest_revision', (change)="somethingChanged()")
+                        li
+                            span([ngClass]="{\'has-error\': (false)}") RIBA plan of work
+                            .drop-down-select
+                                p-dropdown([options]='ribaType', [(ngModel)]='projectData.riba',name='companyType' placeholder='Select a Type', optionLabel='name', (onChange)="somethingChanged()")
+                        li
+                            span([ngClass]="{\'has-error\': (validation.location)}") Project location
+                            .input-box-icon
+                                input(type='text', placeholder='address lookup', name='location', '[(ngModel)]'='projectData.location', required='', (change)="somethingChanged()")
+                                i.location-input-icon
+                        li
+                            span([ngClass]="{\'has-error\': (false)}") Building no. or name
+                            input(type='text', placeholder='Add a building no', name='building_no', '[(ngModel)]'='projectData.building_no', (change)="somethingChanged()")
+                        li
+                            span([ngClass]="{\'has-error\': (false)}") Street name
+                            input(type='text', placeholder='Add street name', name='street', '[(ngModel)]'='projectData.street', (change)="somethingChanged()")
+                        li
+                            span([ngClass]="{\'has-error\': (false)}") City
+                            input(type='text', placeholder='Add city name', name='city', '[(ngModel)]'='projectData.city', (change)="somethingChanged()")
+                        li
+                            span([ngClass]="{\'has-error\': (false)}") Country
+                            input(type='text', placeholder='Add country name', name='country', '[(ngModel)]'='projectData.country', (change)="somethingChanged()")
+                        li
+                            span([ngClass]="{\'has-error\': (false)}") Project postcode
+                            input(type='text', placeholder='Add postcode' , name='postcode', '[(ngModel)]'='projectData.postcode', (change)="somethingChanged()")
+                        li
+                            span([ngClass]="{\'has-error\': (validation.sector)}") Project sector
+                            .drop-down-select
+                                p-dropdown([options]='sectorType', [(ngModel)]='projectData.sector', name='sector_id' placeholder='Select a sector', optionLabel='name', (onChange)="somethingChanged()")
+                        li
+                            span([ngClass]="{\'has-error\': (false)}") Project number
+                            input(type='text', placeholder='Add project number', name='number', '[(ngModel)]'='projectData.number')
+                        li
+                            span([ngClass]="{\'has-error\': (false)}") Responsible office
+                            .input-box-icon
+                                input(type='text', placeholder='Add responsible office', name='responsible_office', '[(ngModel)]'='projectData.responsible_office', (change)="somethingChanged()")
+                                i.location-input-icon
+                        li
+                            span([ngClass]="{\'has-error\': (false)}") Project stage
+                            .drop-down-select
+                                p-dropdown([options]='stageType', [(ngModel)]='projectData.stage', name='stage_id' placeholder='Select a stage', optionLabel='name', (onChange)="somethingChanged()" )
+                        li
+                            span([ngClass]="{\'has-error\': (false)}") Office postcode
+                            input(type='text', placeholder='Add a postcode', name='office_postcode', '[(ngModel)]'='projectData.office_postcode', (change)="somethingChanged()")
+                        li
+                            span([ngClass]="{\'has-error\': (false)}") Project value
+                            input(type='text', placeholder='Add project value', (keyup)='ProjectValue(projectData.value)', name='value', '[(ngModel)]'='projectData.value', (change)="somethingChanged()")
+                        li
+                            span([ngClass]="{\'has-error\': (false)}") Estimated flooring value
+                            input(type='text', placeholder='Add estimated flooring value', (keyup)='edvValue(projectData.edv)', name='edv', '[(ngModel)]'='projectData.edv', (change)="somethingChanged()")
+                        li
+                            span([ngClass]="{\'has-error\': (false)}") Estimated flooring volume m
+                                sup 2
+                            input(type='text', placeholder='Add estimated flooring volume m2', name='efv', '[(ngModel)]'='projectData.efv', (change)="somethingChanged()")
+                        li
+                            span([ngClass]="{\'has-error\': (validation.order_at)}") Order Date
+                            .input-box-icon
+                                p-calendar(placeholder='Select a date', dateFormat="dd/mm/yy"  editable="editable", name='order_at' '[(ngModel)]'='projectData.order_at', required='', (onSelect)="dateFieldChanged('order_at')").pcalendar
+                                i.calendar-input-icon
+                        li
+                            span([ngClass]="{\'has-error\': (validation.next_action_at)}") Next Action Date
+                            .input-box-icon
+                                p-calendar(placeholder='Select a date', dateFormat="dd/mm/yy"  editable="editable", name='next_action_at' '[(ngModel)]'='projectData.next_action_at', required='',(onSelect)="dateFieldChanged('next_action_at')").pcalendar
+                                i.calendar-input-icon
+                        li(class="wid100")
+                            span([ngClass]="{\'has-error\': (validation.companies)}") Company(s)
+                            .drop-down-select.drop-add-company
+                                p-autoComplete([suggestions]="allCompanies",[(ngModel)]='companies', (completeMethod)="searchCompanies($event)", field='name', [multiple]='true', styleClass="wid100", [inputStyle]="{'width':'100%'}",placeholder="Associated companies...", dataKey='id', emptyMessage='No company found', (onSelect)="projectCompanySelected($event)", name='companies'  )
+            .companies-next-prev
+                .next-prev-btn
+                    .next-btn-companies
+                        button(type="submit", *ngIf='!loading').active-next-btn {{editData ? 'Update project' : 'Save project'}}
+                        button(type="button", *ngIf="!loading", [routerLink]='APP_URLS.project').normal-prev-btn Cancel
+                        button(type="submit", *ngIf='loading').active-next-btn Please wait!!!

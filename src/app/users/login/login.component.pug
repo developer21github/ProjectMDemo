@@ -1,0 +1,30 @@
+form.text-center('name'='loginForm' '(ngSubmit)'="login()")
+    .login_form
+        .loaderAbsHolder('*ngIf'='showLoader')
+            app-loader
+        .row
+            .col-lg-12
+                .row
+                    .text-center.col-md-12
+                        img.img-responsive.logo-img(src="/assets/img/logo.png" alt="PT_logo")
+                        .login-bottom
+                        .login-heading
+                            h2 Pro-Tek
+                                span Design Suite
+                .form-group
+                    input#inputEmai.form-control.question(type="email" placeholder="Email address" maxlength="255" 'name'='username' '[(ngModel)]'='loginData.username')
+                .form-group
+                    input#inputPassword.form-control(type="password" placeholder="Password" maxlength="255" 'name'='password' '[(ngModel)]'='loginData.password')
+                .col-sm-6
+                    .radio-btn3
+                        input#3.magic-radio(type="checkbox" name="bth" value="option")
+                        label(for="3")
+                            | Remember me
+                .col-sm-6
+                    .form-group
+                        .text-right
+                            button.btn_submit.pull-right.login(type="submit" '*ngIf'='!(loading || showLoader)') Log in
+                            button.btn_submit.pull-right.login(type="button" '*ngIf'='loading || showLoader') Please wait!
+                .col-sm-12
+                    label
+                        a('[routerLink]'='APP_URLS.forgetPassword') Forgotten your password?

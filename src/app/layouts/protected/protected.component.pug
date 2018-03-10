@@ -1,0 +1,16 @@
+app-header
+.dashboard_body((click)='hideUserPopup()')
+    .container.first
+        .row
+            .col-md-12
+                router-outlet
+
+    .container.last
+        .row
+            .col-lg-12.col-md-12.col-sm-12.col-xs-12
+                p.lastP
+                    | Copyright Construction Aptitude © {{currentYear}}&nbsp;
+                    span.color Pro-Tek Design Suite.&nbsp;
+                    | All rights reserved.
+
+

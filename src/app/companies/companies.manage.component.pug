@@ -1,0 +1,108 @@
+.row([ngStyle]="{'padding': manageComponentPopup  ? '15px' : '0' }")
+    .col-sm-3(*ngIf='editData')
+        app-activity-timeline([company]='companyId')
+    div([ngClass]="{'col-md-9':editData, 'col-md-12':!editData}")
+        form('name'='compnayForm', '(ngSubmit)'="formSubmitted=true;addCompany()")
+            .companies-form
+                .create-new-company
+                    .heading-company
+                        h5 {{editData ? 'Update company' : 'Create a new company'}}
+                        .loading(*ngIf='loading')
+                            app-loader([width]="30")
+
+                        a(*ngIf="!manageComponentPopup", [routerLink]='APP_URLS.company') Back
+                        a(*ngIf="manageComponentPopup", (click)="exitPopup()") Back
+                    .company-inform.bottom-border
+                        h6 Company information
+                        ul
+                            li
+                                span([ngClass]="{\'has-error\': (companyData.name ? false : formSubmitted)}") * Name
+                                input(type='text', placeholder='Company Name', name='name', '[(ngModel)]'='companyData.name', required='')
+                            li
+                                span Website
+                                input(type='text', placeholder='Company Website', pattern='(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?', name='website', '[(ngModel)]'='companyData.website')
+                            li
+                                span Phone number
+                                input(type='text', placeholder='Company Phone Number', name='phone',  '[(ngModel)]'='companyData.phone')
+                            li
+                                span Address
+                                input(type='text', placeholder='Company Address 1', name='address_1', '[(ngModel)]'='companyData.address_1')
+                            li
+                                span Address 2
+                                input(type='text', placeholder='Company Address 2', name='address_2', '[(ngModel)]'='companyData.address_2')
+                            li
+                                span Address 3
+                                input(type='text', placeholder='Company Address 3', name='address_3', '[(ngModel)]'='companyData.address_3')
+                            li
+                                span Postal Town
+                                input(type='text', placeholder='Postal town', name='postal_town', '[(ngModel)]'='companyData.postal_town')
+                            li
+                                span Post Code
+                                input(type='text', placeholder='Post Code', name='post_code', '[(ngModel)]'='companyData.post_code')
+                            li
+                                span Next action at
+                                p-calendar(placeholder='Next action at', dateFormat="dd/mm/yy", name='next_action_at', '[(ngModel)]'='companyData.next_action_at')
+                            li
+                                span Notes
+                                input(type='text', placeholder='Notes', name='notes', '[(ngModel)]'='companyData.notes')
+                            li
+                                span People
+                                input(type='number', min='0', placeholder='Associated people', name='countContacts', '[(ngModel)]'='companyData.countContacts')
+                            li
+                                span Owner
+                                p-autoComplete([(ngModel)]="owner", [suggestions]="users", name='owner', (completeMethod)="searchUsers($event)", field='name', placeholder="Owner", dataKey='id', emptyMessage='No user found', [forceSelection]="'true'" )
+                            li
+                                span Type
+                                span(*ngFor="let i of type") {{type.name}}
+                                .drop-down-select
+                                    p-dropdown([options]="type", [(ngModel)]="companyData.company_type", name='company_type' placeholder='Company type', [optionLabel]="'name'", dataKey='id')
+
+                    .company-inform(*ngFor= "let contact of contacts; let i = index;")
+                        .top-border
+                        h6.mt-1 Contact information
+                        span.sub-head-form.mt-3 Contact {{i+1}}
+                        button.delete-btn-right.active-next-btn((click)="deleteContact(contact.id)", *ngIf='i>0') Delete
+
+                        ul
+                            li
+                                span([ngClass]="{\'has-error\': (false)}") Name
+                                input(type='text', placeholder='Name' name='contact_name{{i}}', [(ngModel)]='contact.name')
+                            li
+                                span([ngClass]="{\'has-error\': (false)}") Surname
+                                input(type='text', placeholder='Surname', name='contact_surname{{i}}', [(ngModel)]='contact.surname')
+                            li
+                                span([ngClass]="{\'has-error\': (false)}") Salutation
+                                input(type='text', placeholder='Salutation', name='contact_salutation{{i}}', [(ngModel)]='contact.salutation')
+                            li
+                                span([ngClass]="{\'has-error\': (false)}") Job title
+                                input(type='text', placeholder='Job Title', name='contact_jobTitle{{i}}', [(ngModel)]='contact.job_title')
+                            li
+                                span([ngClass]="{\'has-error\': (false)  }") Email address
+                                input(type='text', placeholder='Email address', name='contact_email{{i}}', [(ngModel)]='contact.email')
+                            li
+                                span([ngClass]="{\'has-error\': (false) }") Direct Number
+                                input(type='text', placeholder='Direct Number', name='contact_phoneNumber{{i}}', [(ngModel)]='contact.phone')
+                            li
+                                span([ngClass]="{\'has-error\': (false)}") Mobile number
+                                input(type='text', placeholder='Mobile number', name='contact_mobailNumber{{i}}', [(ngModel)]='contact.mobile')
+                            li
+                                span([ngClass]="{\'has-error\': (false)}") Influence
+                                .drop-down-select
+                                    p-dropdown([options]='influences', [(ngModel)]='contact.influencer', name='contact_Influence{{i}}', placeholder='Select an influence', optionLabel='name', dataKey='id')
+                            li
+                                span([ngClass]="{\'has-error\': (false)}") Linkedin
+                                .cb-container.text-center((click)='contact.linkedin = !contact.linkedin')
+                                    i.fa.fa-check(*ngIf='contact.linkedin === true')
+
+                    .add-new-contact-btn
+                        a((click)="addNewContact()")
+                            i
+                            span + Add new contact
+
+            .companies-next-prev
+                .next-prev-btn
+                    .next-btn-companies
+                        button(type="submit", *ngIf="!loading").active-next-btn {{editData ? 'Update company' : 'Save company'}}
+                        button(type="button", *ngIf="!loading && !manageComponentPopup", [routerLink]='APP_URLS.company').normal-prev-btn Cancel
+                        button(type="button", *ngIf="!loading && manageComponentPopup", (click)="exitPopup()").normal-prev-btn Cancel
+                        button(type="submit", *ngIf="loading").active-next-btn Please wait

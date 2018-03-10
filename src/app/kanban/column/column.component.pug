@@ -1,0 +1,8 @@
+.kanban-column([class.removeEvents]="removeEventsClass")
+ .kanban-column-heading {{ column.name }}
+ .kanban-column-content
+     div(*ngFor="let project of projects;")
+
+        app-card([project]="project",[index]="column.id", *ngIf="!project.dummy", (click)="cardClicked(project.id)")
+        div(*ngIf="project.dummy", class="dummy")
+            div {{ project.name }}

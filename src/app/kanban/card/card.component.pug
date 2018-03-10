@@ -1,0 +1,8 @@
+div("draggable"="true", "id"="{{ project.id }}", [class.dummy]="project.dummy", [class.dragged]="dragged")
+    p-card
+        p-header {{ project.name }}
+        .clear
+        .card-content
+            .companyName &nbsp;
+                span(*ngIf="project.companies && project.companies.length > 0") {{ project.companies[0].name}}
+            div  {{ project.value }}

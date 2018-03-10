@@ -1,0 +1,94 @@
+.modal-content
+    .modal-top-bg
+        .col-sm-12
+            .modal-heading([ngClass]="{\'has-error\': (1 && 1) && 1}")
+                h2 Add Activity
+        .clearfix
+    .col-sm-4
+        p-schedule(defaultView="agendaDay", [height]=640, [editable]=true, [events]="events", [defaultDate]="event.startDate")
+    .col-sm-8
+
+        img.call-icon-bg(src="/assets/img/c-icon-1.png", (click)='setType(TYPES.call)', [ngClass]='{"active":etype===TYPES.call}')
+        img.call-icon-bg(src="/assets/img/c-icon-2.png", (click)='setType(TYPES.email)', [ngClass]='{"active":etype===TYPES.email}')
+        img.call-icon-bg(src="/assets/img/c-icon-3.png", (click)='setType(TYPES.meeting)', [ngClass]='{"active":etype===TYPES.meeting}')
+        img.call-icon-bg(src="/assets/img/c-icon-4.png", (click)='setType(TYPES.notes)', [ngClass]='{"active":etype===TYPES.notes}')
+        .clear
+        .input-group
+            span.input-group-addon {{ etype }}:
+            input.form-control.feild-holder(type="text" placeholder="Title..." "[(ngModel)]"="event.title")
+        .col-sm-6.padding-holder
+            h3.heading Date
+            p-calendar("[(ngModel)]"="event.startDate")
+        .col-sm-6.padding-holder
+            h3.heading Time
+            p-calendar("[(ngModel)]"="event.startTime" "[timeOnly]"="true")
+        .col-sm-6.padding-holder
+            h3 Duration
+            div.top10 (hours)
+            input.form-control.feild-holder(type="number" placeholder="Hours" "[(ngModel)]"="event.hours")
+        .col-sm-6.padding-holder
+            h3 &nbsp;
+            div.top10 (minutes)
+            input.form-control.feild-holder(type="number" placeholder="Minutes" "[(ngModel)]"="event.minutes")
+        .col-sm-12.twelve.top10
+            textarea.form-control.feild-holder(rows="3" placeholder="Note" "[(ngModel)]"="event.description")
+        .col-sm-12.twelve
+            h3 Owner
+            .dropdown
+                button#dropdownMenu10.btn.btn-default.dropdown-toggle.drop(type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true")
+                    | {{event.organizer.name}}
+                    span.caret
+                ul.dropdown-menu(aria-labelledby="dropdownMenu1")
+                    li
+                        a(href="#") Action
+                    li
+                        a(href="#") Another action
+                    li
+                        a(href="#") Something else here
+                    li.divider(role="separator")
+                    li
+                        a(href="#") Separated link
+        .col-sm-12.twelve
+            h3 Linked to
+            .form-group
+                label.sr-only(for="exampleInputAmount") Project
+                .input-group
+                    .input-group-addon.child
+                        img(src="/assets/img/project.png" alt="")
+                        .inline
+                            p-autoComplete([(ngModel)]="selectedProjects", [suggestions]="projects", (completeMethod)="searchProjects($event)", field='name', [multiple]='true', styleClass="wid100", placeholder="Project", dataKey='id', emptyMessage='No project found', (onSelect)='projectSelected($event)' )
+            .form-group
+                label.sr-only(for="exampleInputAmount") Contact
+                .input-group
+                    .input-group-addon.child
+                        img(src="/assets/img/contact.png" alt="")
+                        .inline
+                            p-autoComplete([(ngModel)]="selectedContacts", [suggestions]="contacts", (completeMethod)="searchContacts($event)", field='name', [multiple]='true', styleClass="wid100", placeholder="Contact", dataKey='id', emptyMessage='No contact found', (onSelect)='contactSelected($event)' )
+            .form-group
+                label.sr-only(for="exampleInputAmount") Company
+                .input-group
+                    .input-group-addon.child
+                        img(src="/assets/img/company.png" alt="")
+                        .inline
+                            p-autoComplete([(ngModel)]="selectedCompanies", [suggestions]="companies", (completeMethod)="searchCompanies($event)", field='name', [multiple]='true', styleClass="wid100", placeholder="Company", dataKey='id', emptyMessage='No company found', (onSelect)='companySelected($event)' )
+                                ng-template(pTemplate='item', let-company)
+                                    span
+                                        .companyName {{company.name}}
+                                        | [{{company.post_code}}]
+                                ng-template(pTemplate='selectedItem', let-company)
+                                    span.ui-autocomplete-token-label.ng-star-inserted
+                                        .companyName {{company.name}}
+                                        | [{{company.post_code}}]
+    .clearfix
+    .last-1
+    .clearfix
+    .col-sm-12(*ngIf="!showLoader")
+        button.save-button((click)="save()") Save
+        button.cancel-button((click)="cancel()") Cancel
+        .form-check
+            label.form-check-label.check
+                input.form-check-input(type="checkbox", (click)="toggleStatus()", [(ngModel)]="status")
+                |       Mark as done
+    .col-sm-offset-11.col-sm-1(*ngIf="showLoader")
+        app-loader([width]=35)
+    .clearfix

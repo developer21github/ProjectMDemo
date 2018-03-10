@@ -1,0 +1,375 @@
+@import "../../assets/css/variables";
+.loading {
+  float: left;
+  width: 60px;
+  top: -5px;
+  height: 33px;
+  position: relative;
+}
+.mt-2 {
+  margin-top: @width-20;
+}
+.syncLoader{
+  display: inline-block;
+  position: relative;
+  width: 70px;
+  top: 7px;
+}
+.optionsCol {
+  width: 80px;
+}
+.companies-form {
+  background: @white;
+  padding: 55px 60px;
+  float: left;
+  width: @width-100;
+  border-radius: 2px;
+  .companies-heading {
+    float: left;
+    width: @width-100;
+    margin-bottom: @width-10;
+    h2 {
+      font-size: 26px;
+      margin: 0 auto;
+      float: left;
+      padding: 8px 0;
+      color: @fiord;
+    }
+    .companies-search {
+      float: right;
+      position: relative;
+      input {
+        padding: 9px 45px 9px 18px;
+        border: 1px solid #EEEEEE;
+        border-radius: @width-50;
+        width: @width-100;
+        outline: 0;
+        color: @nevada;
+        font-size: 18px;
+      }
+      button {
+        background: @sky-blue;
+        width: 50px;
+        height: 50px;
+        border-radius: @width-100;
+        border: 0 none;
+        position: absolute;
+        right: 0;
+        top: 0;
+        outline: 0;
+        &:before {
+          content: '';
+          background: url("../../assets/img/right.png") no-repeat center center;
+          width: 24px;
+          height: 43px;
+          display: inline-block;
+          background-size: 18px;
+        }
+      }
+    }
+  }
+  .companies-btn-totlas {
+    clear: left;
+    margin-bottom: 25px;
+    button {
+      background: @sky-blue;
+      border: 0 none;
+      outline: 0;
+      color: @white;
+      padding: 8px 30px;
+      font-size: 19px;
+
+    }
+    span {
+      font-size: 18px;
+      color: #aeaeae;
+      margin-left: @width-40;
+    }
+  }
+  .companies-form-short-table {
+    .table-short-abcd {
+      float: left;
+      width: @width-100;
+      margin-bottom: 15px;
+      li {
+        float: left;
+        cursor: pointer;
+        a {
+          padding: 5px 9px;
+          display: block;
+          font-size: 14px;
+          line-height: 18px;
+          border: 1px solid @light-gray-2;
+          margin-left: -1px;
+          //width: 35px;
+          height: @width-30;
+          text-align: center;
+          color: @nevada;
+          &:hover, &.active-short {
+            text-decoration: none;
+            background: @light-gray-2;
+            color: @blue;
+          }
+        }
+        &.short-abcd-all {
+          a {
+            width: 56px;
+          }
+        }
+      }
+    }
+    .table-short-list {
+      clear: both;
+      table {
+        width: @width-100;
+        border-top: 1px solid @light-gray-2;
+        border-left: 1px solid @light-gray-2;
+        border-bottom: 1px solid @light-gray-2;
+        th {
+          padding: @width-10;
+          border-right: 1px solid @light-gray-2;
+          border-bottom: 1px solid @light-gray-2;
+          span {
+            font-size: 12px;
+            color: @fiord;
+          }
+          input {
+            outline: 0;
+            margin: 0;
+            vertical-align: middle;
+            &[type="checkbox"] {
+              margin-right: @width-10;
+            }
+          }
+        }
+        tr.companies-tr {
+          td {
+            padding: @width-10;
+            border-right: 1px solid @light-gray-2;
+            span {
+              font-size: 12px;
+              color: @nevada;
+            }
+            input {
+              outline: 0;
+              margin: 0;
+              vertical-align: middle;
+              padding: 2px 4px;
+              border: 1px solid @light-gray-2;
+              &[type="checkbox"] {
+                margin-right: @width-10;
+              }
+              &[type=number] {
+                &::-webkit-inner-spin-button {
+                  opacity: 1;
+                }
+              }
+            }
+            .table-all-options-icon {
+              .table-icon-option {
+                float: left;
+                margin: 0 6px;
+                i {
+                  width: 16px;
+                  height: 16px;
+                  display: inline-block;
+                  &.icon-copy {
+                    background: url("../../assets/img/icons/copy-file-icon.png") no-repeat center center;
+                  }
+                  &.icon-edit {
+                    background: url("../../assets/img/icons/edit-file-icon.png") no-repeat center center;
+                  }
+                  &.icon-delete {
+                    background: url("../../assets/img/icons/delete-file-icon.png") no-repeat center center;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.companies-next-prev {
+  float: left;
+  width: 100%;
+  .next-prev-btn {
+    float: right;
+    .prev-btn-companies {
+      float: left;
+    }
+    .next-prev-number {
+      float: left;
+      li {
+        span {
+          width: 35px;
+          height: 42px;
+          display: block;
+          background: @white;
+          text-align: center;
+          line-height: @width-40;
+          font-size: 16px;
+          color: @blue;
+        }
+      }
+    }
+    .next-btn-companies {
+      float: left;
+    }
+  }
+}
+
+/* Company Manage */
+.create-new-company {
+  .company-inform {
+    float: left;
+    width: 100%;
+    padding-bottom: @width-40;
+    h6 {
+      font-size: 19px;
+      color: @fiord;
+      display: block;
+      margin: 0 auto;
+      padding-top: 6px;
+      text-transform: uppercase;
+    }
+    li {
+      float: left;
+      margin-top: @width-40;
+      width: 30.5%;
+      margin-right: 4%;
+      &:nth-child(3n+3) {
+        margin-right: 0;
+      }
+      span {
+        color: @fiord;
+        font-size: 19px;
+        display: block;
+        margin-bottom: 12px;
+      }
+      input {
+        border: 2px solid @light-gray-3;
+        border-radius: 2px;
+        padding: 8px 12px;
+        font-size: 16px;
+        outline: 0;
+        width: @width-100;
+        &::-webkit-input-placeholder {
+          color: @light-gray-3;
+        }
+        &::-moz-placeholder {
+          color: @light-gray-3;
+        }
+        &:-ms-input-placeholder {
+          color: @light-gray-3;
+        }
+        &:-moz-placeholder {
+          color: @light-gray-3;
+        }
+      }
+
+    }
+  }
+  .add-new-contact-btn {
+    clear: both;
+    a {
+      color: @blue;
+      font-size: 19px;
+    }
+  }
+}
+
+.has-error {
+  color: red !important;
+}
+
+.create-company-table {
+  margin-top: @width-40;
+  table {
+    width: @width-100;
+    border-top: 1px solid @light-gray-2;
+    border-left: 1px solid @light-gray-2;
+    border-bottom: 1px solid @light-gray-2;
+    th {
+      padding: @width-10;
+      border-right: 1px solid @light-gray-2;
+      border-bottom: 1px solid @light-gray-2;
+      span {
+        font-size: 12px;
+        color: @fiord;
+      }
+      input {
+        outline: 0;
+        margin: 0;
+        vertical-align: middle;
+        &[type="checkbox"] {
+          margin-right: @width-10;
+        }
+      }
+    }
+    tr.companies-tr {
+      td {
+        padding: @width-10;
+        border-right: 1px solid @light-gray-2;
+        span {
+          font-size: 12px;
+          color: @nevada;
+        }
+        input {
+          outline: 0;
+          margin: 0;
+          vertical-align: middle;
+          padding: 2px 4px;
+          border: 1px solid @light-gray-2;
+          &[type="checkbox"] {
+            margin-right: @width-10;
+          }
+        }
+        .table-all-options-icon {
+          .table-icon-option {
+            float: left;
+            margin: 0 6px;
+            i {
+              width: 16px;
+              height: 16px;
+              display: inline-block;
+              &.icon-edit {
+                background: url("../../assets/img/icons/edit-file-icon.png") no-repeat center center;
+              }
+              &.icon-delete {
+                background: url("../../assets/img/icons/delete-file-icon.png") no-repeat center center;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+:host ::ng-deep {
+  .ui-autocomplete {
+    width: 100%;
+  }
+
+  .ui-autocomplete-input {
+    border: 2px solid #CBCBCB;
+    border-radius: 2px;
+    padding: 8px 12px;
+    font-size: 16px;
+    outline: 0;
+    width: 100%;
+  }
+}
+
+.cb-container {
+    display: inline-flex;
+    border: 2px solid #CBCBCB;
+    border-radius: 4px;
+    width: 50px;
+    height: 48px;
+    padding: 14px;
+}
+

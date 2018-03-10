@@ -1,0 +1,130 @@
+@import "../../assets/css/variables";
+.mt-2 { margin-top: @width-20;}
+.syncLoader{
+  display: inline-block;
+  position: absolute;
+  width: 90px;
+}
+
+.loading {
+  float: left;
+  width: 60px;
+  top: 2px;
+  position: relative;
+}
+.companies-form {
+  background: @white;
+  padding: 55px 60px;
+  float: left;
+  width: @width-100;
+  border-radius: 2px;
+  .companies-heading {
+    h2 {
+      font-size: 26px;
+      margin: 0 auto;
+      float: left;
+      padding: 8px 0;
+      color: @fiord;
+      text-transform: uppercase;
+    }
+    .back-page {
+      float: right;
+      a {
+        font-size: 19px;
+        color: #66c7e5;
+      }
+    }
+  }
+  .companies-btn-totlas {
+    clear: left;
+    margin-bottom: 25px;
+    button {
+      background: @sky-blue;
+      border: 0 none;
+      outline: 0;
+      color: @white;
+      padding: 8px 30px;
+      font-size: 19px;
+
+    }
+    span {
+      font-size: 18px;
+      color: #aeaeae;
+      margin-left: @width-40;
+    }
+  }
+  .create-project {
+    float: left;
+    width: 100%;
+    ul {
+      li {
+        float: left;
+        margin-top: @width-40;
+        width: 30.5%;
+        margin-right: 4%;
+        &:nth-child(3n+3) {
+          margin-right: 0;
+        }
+        span {
+          color: @fiord;
+          font-size: 19px;
+          display: block;
+          margin-bottom: 12px;
+        }
+        input {
+          border: 2px solid @light-gray-3;
+          border-radius: 2px;
+          padding: 8px 12px;
+          font-size: 16px;
+          outline: 0;
+          width: @width-100;
+          &::-webkit-input-placeholder { color: @light-gray-3;}
+          &::-moz-placeholder { color: @light-gray-3;}
+          &:-ms-input-placeholder { color: @light-gray-3;}
+          &:-moz-placeholder { color: @light-gray-3;}
+        }
+        .input-box-icon {
+          position: relative;
+          i {
+            width: 25px;
+            height: 25px;
+            display: inline-block;
+            position: absolute;
+            right: 12px;
+            top: 12px;
+            &.calendar-input-icon {
+              background: url("./../../assets/img/icons/calendar-icon.png") no-repeat right center;
+            }
+            &.location-input-icon {
+              background: url("./../../assets/img/icons/location-icon.png") no-repeat right center;
+              background-size: contain;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.has-error {
+  color: red !important;
+}
+
+.companies-next-prev {
+  float: left;
+  width: 100%;
+  .next-prev-btn {
+    float: right;
+
+    .next-btn-companies {
+      float: left;
+    }
+  }
+}
+
+:host {
+    .auto-comp {
+        .ui-autocomplete-input-token input.undefined {
+            width: 11em;
+        }
+    }
+}

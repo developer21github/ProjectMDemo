@@ -1,0 +1,10 @@
+.box-container
+    .row
+        .col-md-12.bottom10
+            button.btn.btn-primary((click)="addActivityClicked()") Add Activity
+            button.btn.btn-primary((click)="syncNow()", *ngIf="!showSyncLoader") Sync
+            .syncLoader(*ngIf="showSyncLoader")
+                app-loader([width]=30)
+    .row
+        .col-md-12
+            app-calendar

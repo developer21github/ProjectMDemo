@@ -1,0 +1,9 @@
+.modal-content
+    .modal-header
+        button.close.pull-right((click)="bsModalRef.hide()")
+            span(aria-hidden="true") ×
+        h4.modal-title {{title}}
+    .modal-body
+        | {{body}}
+    .modal-footer
+        button.btn.btn-primary((click)="bsModalRef.hide()") {{closeBtnName}}

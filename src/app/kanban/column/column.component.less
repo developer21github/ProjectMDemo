@@ -1,0 +1,41 @@
+@import "../../../assets/css/variables";
+
+.kanban-column {
+
+  padding: 0px 2px;
+  width: 100%;
+  //min-height: 500px;
+  height: 600px;
+  .kanban-column-heading {
+    padding: 10px 15px;
+    background: linear-gradient(to bottom, #fff, #e4e4e4);
+    border: 1px solid #eee;
+    color: #000;
+    font-weight: bold;
+    font-size: 1.3em;
+    text-align: center;
+  }
+
+  .kanban-column-content {
+    background: #2974ba;
+    padding: 2px 5px;
+    height: calc(~"100% - 36px");
+    overflow-x: hidden;
+    overflow-y: scroll;
+  }
+
+  .dummy{
+    font-size: 1.3em;
+    padding: 10px 15px;
+    height: 80px;
+    background: #dfdfdf;
+    pointer-events: none;
+    border: 1px solid #039DDE;
+  }
+}
+
+.removeEvents{
+  * {
+    pointer-events: none;
+  }
+}

@@ -1,0 +1,523 @@
+/* You can add global styles to this file, and also import other style files */
+@import "assets/css/variables.less";
+@import (css) url(https://fonts.googleapis.com/css?family=Roboto:400,700);
+
+@font-face {
+  font-family: FuturaICGLight;
+  src: url(/assets/fonts/Futura_ICG_Light.ttf);
+}
+
+@font-face {
+  font-family: FuturaPT;
+  src: url(/assets/fonts/FuturaPTBook.otf);
+}
+
+@font-face {
+  font-family: MrEavesModOT;
+  src: url(/assets/fonts/MrEavesModOT-Reg.otf);
+}
+
+@font-face {
+  font-family: MrEavesModOTLight;
+  src: url(/assets/fonts/FuturaPTLight.otf);
+}
+
+@font-face {
+  font-family: DinPro;
+  src: url(/assets/fonts/dinpro/DINPro.otf);
+}
+
+a {
+  cursor: pointer;
+}
+
+.lastP {
+  margin-left: -1.5%;
+  margin-top: 4.5%;
+  color: #989898;
+}
+
+.color {
+  color: @blue;
+  font-weight: bold;
+}
+
+.loaderAbsHolder {
+  position: absolute;
+  width: @width-100;
+  left: 0px;
+  top: 0px;
+  height: 100%;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+button {
+  &.login {
+    background-image: url("/assets/img/login-right.png");
+    background-repeat: no-repeat;
+    border: none;
+    outline: none;
+    font-size: 19px;
+    font-family: FuturaPT;
+    color: @blue;
+    line-height: 1.2;
+    background-color: white;
+    padding-top: 10px;
+    padding-left: 2px;
+    padding-right: 15px;
+    letter-spacing: 0.9px;
+    font-weight: 500;
+    background-size: 10px;
+    background-position: calc(100% - 4px) 14px;
+
+  }
+}
+
+.modal {
+  background: rgba(0, 0, 0, 0.4);
+}
+
+body {
+  background-color: #edebe9 !important;
+
+  .mt-1 {
+    margin-top: @width-10 !important;
+  }
+  .mt-2 {
+    margin-top: @width-20 !important;
+  }
+  .mt-3 {
+    margin-top: @width-30 !important;
+  }
+  .bottom-border {
+    border-bottom: 1px solid #dfdfdf;
+  }
+  .top-border {
+    border-top: 1px solid #dfdfdf;
+  }
+  ul {
+    padding: 0;
+    margin: 0;
+  }
+  li {
+    list-style: none;
+  }
+  /* Button */
+  .normal-prev-btn {
+    background: @gray;
+    border: 0 none;
+    color: @white;
+    padding: 10px 15px;
+    outline: 0;
+    font-size: 16px;
+  }
+  .active-next-btn {
+    background: @blue;
+    border: 0 none;
+    color: @white;
+    padding: 10px 15px;
+    outline: 0;
+    font-size: 16px;
+  }
+
+  .delete-btn-right {
+    float: right;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+  /* Heading */
+  .heading-company {
+    border-bottom: 1px solid @light-gray;
+    float: left;
+    width: @width-100;
+    padding-bottom: @width-40;
+    h5 {
+      margin: 0;
+      font-size: 26px;
+      color: @fiord;
+      text-transform: uppercase;
+      float: left;
+    }
+    a {
+      font-size: 19px;
+      color: #66c7e5;
+      float: right;
+    }
+  }
+  .sub-head-form {
+    font-size: 19px;
+    color: #5d676f;
+    display: inline-block;
+    text-transform: uppercase;
+  }
+
+  .drop-down-select {
+    .ui-dropdown {
+      width: @width-100 !important;
+      .ui-dropdown-label {
+        border: 2px solid @light-gray-3;
+        border-radius: 2px;
+        padding: 8px 12px;
+        color: @light-gray-3;
+        font-size: 16px;
+        outline: 0;
+        width: @width-100;
+      }
+      .ui-dropdown-trigger {
+        border-left: 2px solid @light-gray-3;
+        width: 35px;
+        height: calc(100% - 9px);
+        position: absolute;
+        right: 2px;
+        top: 2px;
+        padding: 0 0.25em;
+        text-align: center;
+        line-height: 45px;
+      }
+      .ui-dropdown-panel {
+        padding: 0;
+        .ui-dropdown-item {
+          padding: 6px 10px;
+          &.ui-state-highlight {
+            background: @blue;
+            border-radius: 0;
+          }
+        }
+      }
+    }
+  }
+  form {
+    float: left;
+    width: @width-100;
+
+  }
+  .company-inform {
+    .ui-calendar {
+      width: @width-100;
+      input.ui-inputtext {
+        border: 2px solid @light-gray-3;
+        border-radius: 2px;
+        padding: 8px 12px;
+        color: @light-gray-3;
+        font-size: 16px;
+        outline: 0;
+        width: @width-100;
+        &::-webkit-input-placeholder {
+          color: @light-gray-3;
+        }
+        &::-moz-placeholder {
+          color: @light-gray-3;
+        }
+        &:-ms-input-placeholder {
+          color: @light-gray-3;
+        }
+        &:-moz-placeholder {
+          color: @light-gray-3;
+        }
+        &:focus {
+          box-shadow: none;
+        }
+      }
+      .ui-datepicker {
+        width: @width-100;
+      }
+    }
+  }
+  .pcalendar {
+    .ui-calendar {
+      width: @width-100;
+      input.ui-inputtext {
+        border: 2px solid @light-gray-3;
+        border-radius: 2px;
+        padding: 8px 12px;
+        color: @light-gray-3;
+        font-size: 16px;
+        outline: 0;
+        width: @width-100;
+        &::-webkit-input-placeholder {
+          color: @light-gray-3;
+        }
+        &::-moz-placeholder {
+          color: @light-gray-3;
+        }
+        &:-ms-input-placeholder {
+          color: @light-gray-3;
+        }
+        &:-moz-placeholder {
+          color: @light-gray-3;
+        }
+        &:focus {
+          box-shadow: none;
+        }
+      }
+      .ui-datepicker {
+        width: @width-100;
+      }
+    }
+  }
+  .drop-add-company {
+    .ui-dropdown {
+      width: 80% !important;
+    }
+    .add-company-btn {
+      float: right;
+      button {
+        border: 0 none;
+        background: @blue;
+        color: @white;
+        font-size: 50px;
+        font-weight: bold;
+        width: 50px;
+        height: 50px;
+        line-height: 40px;
+        outline: none;
+      }
+    }
+  }
+}
+
+.box-container {
+  background: #FFF !important;
+  padding: 30px 30px;
+}
+
+.btn-primary {
+  background: #009ee2;
+  border-color: #009ee2;
+}
+
+.wid100 {
+  width: 100% !important;
+  .ui-widget {
+    width: 100% !important;
+  }
+}
+
+.login_body {
+  @import "assets/css/magic-check_login";
+
+  .clear {
+    clear: both;
+  }
+  .login-bottom {
+    width: 100%;
+    background-color: #cfcfcf;
+    height: 1px;
+    margin-bottom: 20px;
+  }
+  .login-heading h2 {
+    font-size: 30px;
+    color: #006cb6;
+    text-align: center;
+    padding-bottom: 20px;
+    font-family: "DinPro";
+  }
+  .login-heading h2 span {
+    font-size: 30px;
+    color: #5d6b6b;
+    text-align: center;
+  }
+
+  .form-control::-webkit-input-placeholder {
+    font-size: 15px;
+    font-family: MrEavesModOT;
+    color: rgb(178, 178, 178);
+    line-height: 3.02;
+  }
+
+  .logo-img {
+    display: inline-block;
+    padding: 12% 0;
+  }
+
+  .login_form {
+    position: relative;
+    background-color: #ffffff;
+    border-top: 6px solid #009ee2;
+    vertical-align: middle;
+    padding: 30px;
+    width: 500px;
+    padding: 10px 45px;
+  }
+
+  .form-control {
+    box-sizing: border-box;
+    padding: 14px 12px;
+    height: auto;
+    border-radius: 0;
+    border: 1px solid #bcb5ad;
+    background-image: url(/assets/img/question.png) !important;
+    background-repeat: no-repeat;
+    background-size: 15%;
+    background-position: 60px 10px;
+  }
+
+  .radio-btn3 {
+    float: left;
+  }
+
+  .magic-radio + label, .magic-checkbox + label {
+    padding-left: 10px !important;
+    margin-top: -1%;
+  }
+
+  .magic-radio + label:before, .magic-checkbox + label:before {
+    top: 15px !important;
+    left: -13px !important;
+  }
+
+  .magic-radio + label:after {
+    top: 18px !important;
+    left: -10px !important;
+  }
+
+  #inputPassword {
+    background-image: url(/assets/img/question.png) !important;
+    background-repeat: no-repeat;
+    background-size: 350%;
+    background-position: 47% 48%;
+  }
+
+  #inputEmai {
+    background-image: url(/assets/img/question.png) !important;
+    background-repeat: no-repeat;
+    background-size: 350%;
+    background-position: 47% 48%;
+  }
+
+  label {
+    font-size: 15px;
+    font-family: MrEavesModOT;
+    color: rgb(178, 178, 178);
+    line-height: 3.02;
+    font-weight: 300;
+    /*padding-bottom: 5%;
+    text-align: left;*/
+  }
+
+  @media (min-width: 768px) and (max-width: 991px) {
+    .logo-img {
+      width: 120%;
+    }
+  }
+
+  @media (min-width: 560px) and (max-width: 767px) {
+    .logo-img {
+      width: 110%;
+    }
+  }
+
+  @media (min-width: 480px) and (max-width: 559px) {
+    .logo-img {
+      width: 120%;
+    }
+
+    button {
+      font-size: 13px;
+      padding: 1.5% 0;
+      padding-left: 5%;
+      padding-right: 6%;
+      background-position: 51px 5px;
+    }
+  }
+
+  @media (max-width: 414px) {
+    .login_form {
+      background-color: #ffffff;
+      border-top: 6px solid #009ee2;
+      vertical-align: middle;
+      padding: 30px;
+      width: 100% !important;
+      padding: 10px 45px;
+    }
+
+    button {
+      font-size: 13px;
+      padding: 1.5% 0;
+      padding-left: 5%;
+      padding-right: 6%;
+      background-position: 58px 6px !important;
+    }
+  }
+
+  @media (max-width: 320px) {
+
+    button {
+
+      background-position: 53px 6px !important;
+    }
+
+  }
+
+  @media (min-width: 320px) and (max-width: 479px) {
+
+    .logo-img {
+      width: 150%;
+    }
+
+    .form-control {
+      padding: 5% 9%;
+    }
+
+    button {
+      font-size: 13px;
+      padding: 1.5% 0;
+      padding-left: 5%;
+      padding-right: 6%;
+      background-position: 51px 5px;
+    }
+  }
+}
+
+body .pcalendar .ui-calendar input.ui-inputtext, body .drop-down-select .ui-dropdown .ui-dropdown-label {
+  color: inherit;
+}
+
+.pagination-table {
+    float: left;
+    width: 100%;
+    display: block;
+    pagination-template {
+        ul {
+            float: right;
+            li {
+                float: left;
+                background: #FFFFFF;
+                width: 40px;
+                height: 40px;
+                text-align: center;
+                line-height: 38px;
+
+                &.pagination-next, &.pagination-previous {
+                    background: #009ee2;
+                    color: #FFFFFF;
+                    padding: 2px 10px;
+                    margin: 0;
+                    width: auto;
+                    a {
+                        color: #FFFFFF;
+                        padding: 0;
+                        &:hover {
+                            background: transparent;
+                        }
+                    }
+                }
+                &.disabled {
+                    background: #CBCBCB;
+                    color: #FFFFFF;
+                    padding: 2px 10px;
+                    margin: 0;
+                    width: auto;
+                    &:hover {
+                        background: #CBCBCB;
+                    }
+                }
+                a {
+                    color: #009ee2;
+                }
+            }
+        }
+    }
+}
